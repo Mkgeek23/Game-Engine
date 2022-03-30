@@ -2,11 +2,8 @@ package game.engine;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Date;
 import java.util.Random;
 
 public class GameEngine extends JFrame implements MouseListener {
@@ -131,6 +128,9 @@ public class GameEngine extends JFrame implements MouseListener {
     public void onMouseRightClick(int x, int y) {
     }
 
+    public void onMouseLeftAndRightClick(int x, int y) {
+    }
+
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
@@ -147,10 +147,20 @@ public class GameEngine extends JFrame implements MouseListener {
         int y = button.getX() / button.getWidth();
         int x = button.getY() / button.getHeight();
 
-        if (leftBtnClicked && e.getButton() == MouseEvent.BUTTON1)
+
+        if (leftBtnClicked && rightBtnClicked) {
+            onMouseLeftAndRightClick(x, y);
+            leftBtnClicked = false;
+            rightBtnClicked = false;
+        }
+        else if (leftBtnClicked && e.getButton() == MouseEvent.BUTTON1) {
             onMouseLeftClick(x, y);
-        if (rightBtnClicked && e.getButton() == MouseEvent.BUTTON3)
+            leftBtnClicked = false;
+        }
+        else if (rightBtnClicked && e.getButton() == MouseEvent.BUTTON3) {
             onMouseRightClick(x, y);
+            rightBtnClicked = false;
+        }
     }
 
     @Override

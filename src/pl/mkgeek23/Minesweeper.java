@@ -15,6 +15,7 @@ public class Minesweeper extends GameEngine {
     private int score;
     private final static String MINE = "\uD83D\uDCA3";
     private final static String FLAG = "\uD83D\uDEA9";
+    private final static String FAILFLAG = "\uD83D\uDDF4";
 
     public static void main(String[] args) {
         Minesweeper minesweeper = new Minesweeper();
@@ -22,7 +23,7 @@ public class Minesweeper extends GameEngine {
     }
 
     @Override
-    public boolean isGameStopped(){
+    public boolean isGameStopped() {
         return isGameStopped;
     }
 
@@ -35,7 +36,7 @@ public class Minesweeper extends GameEngine {
     private void createGame() {
         for (int i = 0; i < gameField.length; i++) {
             for (int j = 0; j < gameField[i].length; j++) {
-                boolean isMine = getRandomNumber(10) <= 1;
+                boolean isMine = getRandomNumber(100) < 15;
                 if (isMine) countMinesOnField++;
 
                 gameField[i][j] = new GameObject(j, i, isMine);
@@ -72,10 +73,10 @@ public class Minesweeper extends GameEngine {
         //showMessageDialog(Color.GREEN, "WIN", Color.RED, 3);
     }
 
-    private void flagAllMines(){
-        for(int y = 0; y< gameField.length; y++){
-            for(int x = 0; x< gameField[0].length; x++){
-                if(!gameField[y][x].isOpen && !gameField[y][x].isFlag){
+    private void flagAllMines() {
+        for (int y = 0; y < gameField.length; y++) {
+            for (int x = 0; x < gameField[0].length; x++) {
+                if (!gameField[y][x].isOpen && !gameField[y][x].isFlag) {
                     markTile(x, y);
                 }
             }
@@ -154,6 +155,35 @@ public class Minesweeper extends GameEngine {
         }
     }
 
+    @Override
+    public void onMouseLeftAndRightClick(int x, int y) {
+        openNeighbourFields(x, y);
+    }
+
+    private void openNeighbourFields(int x, int y){
+        if (gameField[y][x].isOpen) {
+            if (countFlags(x, y) == gameField[y][x].countMineNeighbors){
+                for (int i = -1; i <= 1; i++) {
+                    for (int j = -1; j <= 1; j++) {
+                        if (isInRange(x + j, 0, SIDE - 1) && isInRange(y + i, 0, SIDE - 1)) {
+                            openTile(x+j, y+i);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public int countFlags(int x, int y) {
+        int numOfFlags = 0;
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (isInRange(x + j, 0, SIDE - 1) && isInRange(y + i, 0, SIDE - 1))
+                    numOfFlags += gameField[y + i][x + j].isFlag ? 1 : 0;
+            }
+        }
+        return numOfFlags;
+    }
 
     @Override
     public void onMouseLeftClick(int x, int y) {

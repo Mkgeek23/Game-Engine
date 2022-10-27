@@ -24,9 +24,9 @@ The game allows you to mark the fields with a flag under which you can be sure t
 Additionally, in the case when we have a number of flags near the field with a number corresponding to this number, we can click on them with the left and right mouse button at the same time to reveal all other fields nearby
 
 #### Control
-LMB - unveiling the field
-RMB - field marking with a flag
-LMB + RMB - revealing the remaining fields, when the number of nearby flags matches the number from the field.
+- LMB - unveiling the field
+- RMB - field marking with a flag
+- LMB + RMB - revealing the remaining fields, when the number of nearby flags matches the number from the field.
 
 #### Win
 When all boxes without a bomb are revealed, the game is won. At this point, all remaining unflagged fields are flagged.
@@ -34,3 +34,29 @@ When all boxes without a bomb are revealed, the game is won. At this point, all 
 #### Screenshots
 ![App Screenshot](screenshots/Minesweeper.png)
 ![App Screenshot](screenshots/Minesweeper2.png)
+
+
+
+## Snake game
+
+The second game available is the snake game. The game was quite popular on old phones back in a time when there weren't any smartphones yet.
+
+#### Object of the game
+
+The goal of the game is to eat as many fruits as possible and thus score as many points as possible.
+
+#### Game
+
+The game is about steering the snake around the board so that it eats as many fruits as possible. With each piece of fruit eaten, the snake grows and the speed of the game increases.
+Additionally, the snake cannot get into the wall or into itself, as this will result in a loss.
+
+#### Control
+- WASD / Keyboard arrows - control the direction of the snake's movement
+- Space - restart the game after losing or winning
+
+#### Win
+You win after eating 25 fruits
+
+#### Screenshots
+![App Screenshot](screenshots/Snake.png)
+![App Screenshot](screenshots/Snake2.png)

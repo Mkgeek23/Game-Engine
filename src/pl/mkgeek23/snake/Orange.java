@@ -5,7 +5,8 @@ import game.engine.GameEngine;
 import java.awt.*;
 
 public class Orange extends GameObject {
-    private static final String ORANGE_SIGN = "\uD83C\uDF46";
+    //private static final String ORANGE_SIGN = "\uD83C\uDF46";
+    private static final String ORANGE_SIGN = "";
     public boolean isAlive = true;
 
     public Orange(int x, int y) {

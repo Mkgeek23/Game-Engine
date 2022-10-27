@@ -42,27 +42,11 @@ public class Snake extends GameObject {
         int newX = snakeParts.get(0).x;
         int newY = snakeParts.get(0).y;
 
-        /*switch (direction) {
-            case UP -> newY--;
-            case DOWN -> newY++;
-            case LEFT -> newX--;
-            case RIGHT -> newX++;
-        }*/
-
         switch (direction) {
-            case UP:
-                newX--;
-                break;
-            case DOWN:
-                System.out.println("DOWN");
-                newX++;
-                break;
-            case LEFT:
-                newY--;
-                break;
-            case RIGHT:
-                newY++;
-                break;
+            case UP -> newX--;
+            case DOWN -> newX++;
+            case LEFT -> newY--;
+            case RIGHT -> newY++;
         }
 
         return new GameObject(newX, newY);

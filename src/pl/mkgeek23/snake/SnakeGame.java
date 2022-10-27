@@ -30,7 +30,7 @@ public class SnakeGame extends GameEngine {
         setTitle("Snake Game");
     }
 
-    public void initializeFruits(){
+    public void initializeFruits() {
         fruits = new HashMap<>();
         fruits.put("Apple", new FruitHelper("\uD83C\uDF4E", Color.RED, 5));
         fruits.put("Lemon", new FruitHelper("\uD83C\uDF4B", Color.YELLOW, 10));
@@ -64,6 +64,7 @@ public class SnakeGame extends GameEngine {
             apple = new Fruit(newX, newY, fruits.get("Lemon"));
         } while (snake.checkCollision(apple));
     }
+
     private void createNewOrange() {
         do {
             int newX = getRandomNumber(WIDTH);
@@ -85,23 +86,15 @@ public class SnakeGame extends GameEngine {
     @Override
     public void onKeyPress(Key key) {
         switch (key) {
-            case LEFT:
-                snake.setDirection(Direction.LEFT);
-                break;
-            case RIGHT:
-                snake.setDirection(Direction.RIGHT);
-                break;
-            case UP:
-                snake.setDirection(Direction.UP);
-                break;
-            case DOWN:
-                snake.setDirection(Direction.DOWN);
-                break;
-            case SPACE:
+            case LEFT -> snake.setDirection(Direction.LEFT);
+            case RIGHT -> snake.setDirection(Direction.RIGHT);
+            case UP -> snake.setDirection(Direction.UP);
+            case DOWN -> snake.setDirection(Direction.DOWN);
+            case SPACE -> {
                 if (isGameStopped) {
                     createGame();
                 }
-                break;
+            }
         }
     }
 

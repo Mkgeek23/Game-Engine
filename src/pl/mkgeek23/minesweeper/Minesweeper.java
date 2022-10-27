@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Minesweeper extends GameEngine {
 
-    private final int SIDE = 5;
+    private final int SIDE = 15;
     private GameObject[][] gameField = new GameObject[SIDE][SIDE];
     private int countMinesOnField = 0;
     private int countFlags;

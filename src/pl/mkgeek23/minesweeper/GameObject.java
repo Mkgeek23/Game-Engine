@@ -1,4 +1,4 @@
-package pl.mkgeek23;
+package pl.mkgeek23.minesweeper;
 
 public class GameObject {
     public int x;

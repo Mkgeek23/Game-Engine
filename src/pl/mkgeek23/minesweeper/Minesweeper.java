@@ -1,4 +1,4 @@
-package pl.mkgeek23;
+package pl.mkgeek23.minesweeper;
 
 import game.engine.GameEngine;
 
@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Minesweeper extends GameEngine {
 
-    private final int SIDE = 20;
+    private final int SIDE = 5;
     private GameObject[][] gameField = new GameObject[SIDE][SIDE];
     private int countMinesOnField = 0;
     private int countFlags;

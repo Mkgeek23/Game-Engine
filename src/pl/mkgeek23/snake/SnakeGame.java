@@ -12,7 +12,6 @@ public class SnakeGame extends GameEngine {
     private Snake snake;
     private int turnDelay;
     private Fruit apple;
-    private Orange orange;
     private boolean isGameStopped;
     private static final int GOAL = 28;
     private int score;
@@ -63,14 +62,6 @@ public class SnakeGame extends GameEngine {
             int newY = getRandomNumber(HEIGHT);
             apple = new Fruit(newX, newY, fruits.get("Lemon"));
         } while (snake.checkCollision(apple));
-    }
-
-    private void createNewOrange() {
-        do {
-            int newX = getRandomNumber(WIDTH);
-            int newY = getRandomNumber(HEIGHT);
-            orange = new Orange(newX, newY);
-        } while (snake.checkCollision(orange));
     }
 
     private void gameOver() {

@@ -21,7 +21,7 @@ The game is played by left-clicking on the fields in order to discover them. Eac
 
 The game allows you to mark the fields with a flag under which you can be sure that there is a bomb, because one field is marked with the number 1, for example, and around this field you have only one uncovered (then there is definitely a bomb). Such a marking can be made by right-clicking on the covered field. A field marked with a flag cannot be revealed with the left mouse button. On the other hand, the flag can be removed by pressing the right mouse button again on the field containing it.
 
-Additionally, in the case when we have a number of flags near the field with a number corresponding to this number, we can click on them with the left and right mouse button at the same time to reveal all other fields nearby
+Additionally, in the case when we have a number of flags near the field with a number corresponding to this number, we can click on them with the left and right mouse button at the same time to reveal all other fields nearby.
 
 #### Control
 - LMB - unveiling the field
@@ -55,7 +55,7 @@ Additionally, the snake cannot get into the wall or into itself, as this will re
 - Space - restart the game after losing or winning
 
 #### Win
-You win after eating 25 fruits
+You win after eating 25 fruits.
 
 #### Screenshots
 ![App Screenshot](screenshots/Snake.png)

@@ -23,6 +23,7 @@ public class SnakeGame extends GameEngine {
     public void initialize() {
         setScreenSize(WIDTH, HEIGHT);
         createGame();
+        setTitle("Snake Game");
     }
 
     private void createGame() {

@@ -46,15 +46,15 @@ public class GameEngine extends JFrame implements MouseListener, KeyListener {
         add(header, BorderLayout.PAGE_START);
     }
 
-    public void setScore(int score){
-        if(scoreLabel == null){
+    public void setScore(int score) {
+        if (scoreLabel == null) {
             initScore();
         }
         scoreLabel.setText(Integer.toString(score));
     }
 
-    public void setScore(String score){
-        if(scoreLabel == null){
+    public void setScore(String score) {
+        if (scoreLabel == null) {
             initScore();
         }
         scoreLabel.setText(score);
@@ -118,6 +118,7 @@ public class GameEngine extends JFrame implements MouseListener, KeyListener {
     public void setCellColor(int x, int y, Color color) {
         cells[y][x].setBackground(color);
     }
+
     public void setCellColorForeground(int x, int y, Color color) {
         cells[y][x].setForeground(color);
     }
@@ -130,6 +131,7 @@ public class GameEngine extends JFrame implements MouseListener, KeyListener {
         cells[y][x].setText(text);
         setCellColor(x, y, color);
     }
+
     public void setCellValueEx(int x, int y, Color backgroundColor, String text, Color foregroundColor, int f) {
         cells[y][x].setText(text);
         setCellColor(x, y, backgroundColor);
@@ -153,7 +155,7 @@ public class GameEngine extends JFrame implements MouseListener, KeyListener {
     public void onMouseLeftAndRightClick(int x, int y) {
     }
 
-    public void onKeyPress(Key key){
+    public void onKeyPress(Key key) {
     }
 
     @Override
@@ -164,8 +166,8 @@ public class GameEngine extends JFrame implements MouseListener, KeyListener {
         if (e.getButton() == MouseEvent.BUTTON3) {
             rightBtnClicked = true;
         }
-        System.out.println("keyTyped");
     }
+
     @Override
     public void mouseReleased(MouseEvent e) {
         JButton button = (JButton) e.getSource();
@@ -177,12 +179,10 @@ public class GameEngine extends JFrame implements MouseListener, KeyListener {
             onMouseLeftAndRightClick(x, y);
             leftBtnClicked = false;
             rightBtnClicked = false;
-        }
-        else if (leftBtnClicked && e.getButton() == MouseEvent.BUTTON1) {
+        } else if (leftBtnClicked && e.getButton() == MouseEvent.BUTTON1) {
             onMouseLeftClick(x, y);
             leftBtnClicked = false;
-        }
-        else if (rightBtnClicked && e.getButton() == MouseEvent.BUTTON3) {
+        } else if (rightBtnClicked && e.getButton() == MouseEvent.BUTTON3) {
             onMouseRightClick(x, y);
             rightBtnClicked = false;
         }
@@ -202,7 +202,7 @@ public class GameEngine extends JFrame implements MouseListener, KeyListener {
         return val >= min && val <= max;
     }
 
-    public void onTurn(int delay){
+    public void onTurn(int delay) {
         try {
             Thread.sleep(delay);
         } catch (InterruptedException e) {
@@ -210,16 +210,16 @@ public class GameEngine extends JFrame implements MouseListener, KeyListener {
         }
     }
 
-    public void setTurnTimer(int turnTimer){
+    public void setTurnTimer(int turnTimer) {
         this.turnTimer = turnTimer;
-        if(turnTimer > 0 && !isRunning){
+        if (turnTimer > 0 && !isRunning) {
             run();
         }
     }
 
-    public void run(){
+    public void run() {
         isRunning = true;
-        while(isRunning){
+        while (isRunning) {
             onTurn(turnTimer);
         }
     }
@@ -230,27 +230,12 @@ public class GameEngine extends JFrame implements MouseListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println(e.getKeyCode());
-        switch (e.getKeyCode()){
-            case 87:
-            case 38:
-                onKeyPress(Key.UP);
-                break;
-            case 83:
-            case 40:
-                onKeyPress(Key.DOWN);
-                break;
-            case 37:
-            case 65:
-                onKeyPress(Key.LEFT);
-                break;
-            case 39:
-            case 68:
-                onKeyPress(Key.RIGHT);
-                break;
-            case 32:
-                onKeyPress(Key.SPACE);
-                break;
+        switch (e.getKeyCode()) {
+            case 87, 38 -> onKeyPress(Key.UP);
+            case 83, 40 -> onKeyPress(Key.DOWN);
+            case 37, 65 -> onKeyPress(Key.LEFT);
+            case 39, 68 -> onKeyPress(Key.RIGHT);
+            case 32 -> onKeyPress(Key.SPACE);
         }
     }
 

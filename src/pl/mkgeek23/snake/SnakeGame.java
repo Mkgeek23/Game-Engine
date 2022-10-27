@@ -4,16 +4,19 @@ import game.engine.GameEngine;
 import game.engine.Key;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SnakeGame extends GameEngine {
     public static final int WIDTH = 15, HEIGHT = 15;
     private Snake snake;
     private int turnDelay;
-    private Apple apple;
+    private Fruit apple;
     private Orange orange;
     private boolean isGameStopped;
     private static final int GOAL = 28;
     private int score;
+    private Map<String, FruitHelper> fruits;
 
     public static void main(String[] args) {
         SnakeGame snakeGame = new SnakeGame();
@@ -22,8 +25,15 @@ public class SnakeGame extends GameEngine {
 
     public void initialize() {
         setScreenSize(WIDTH, HEIGHT);
+        initializeFruits();
         createGame();
         setTitle("Snake Game");
+    }
+
+    public void initializeFruits(){
+        fruits = new HashMap<>();
+        fruits.put("Apple", new FruitHelper("\uD83C\uDF4E", Color.RED, 5));
+        fruits.put("Lemon", new FruitHelper("\uD83C\uDF4B", Color.YELLOW, 10));
     }
 
     private void createGame() {
@@ -32,7 +42,6 @@ public class SnakeGame extends GameEngine {
         turnDelay = 300;
         snake = new Snake(WIDTH / 2, HEIGHT / 2);
         createNewApple();
-        createNewOrange();
         isGameStopped = false;
         drawScene();
         setTurnTimer(turnDelay);
@@ -46,14 +55,13 @@ public class SnakeGame extends GameEngine {
         }
         snake.draw(this);
         apple.draw(this);
-        orange.draw(this);
     }
 
     private void createNewApple() {
         do {
             int newX = getRandomNumber(WIDTH);
             int newY = getRandomNumber(HEIGHT);
-            apple = new Apple(newX, newY);
+            apple = new Fruit(newX, newY, fruits.get("Lemon"));
         } while (snake.checkCollision(apple));
     }
     private void createNewOrange() {
@@ -103,7 +111,7 @@ public class SnakeGame extends GameEngine {
 
         snake.move(apple);
         if (!apple.isAlive) {
-            score += 5;
+            score += apple.getScore();
             setScore(score);
             turnDelay -= 10;
             setTurnTimer(turnDelay);

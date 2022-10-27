@@ -21,7 +21,7 @@ public class Snake extends GameObject {
     }
 
     public void setDirection(Direction direction) {
-        if(!isAlive){
+        if (!isAlive) {
             return;
         }
         if ((this.direction == Direction.UP && direction == Direction.DOWN)
@@ -87,7 +87,7 @@ public class Snake extends GameObject {
         }
     }
 
-    public void move(Apple apple) {
+    public void move(Fruit apple) {
         GameObject snakePart = createNewHead();
         if (snakePart.x < 0 || snakePart.y < 0 || snakePart.x >= 15 || snakePart.y >= 15 || checkCollision(snakePart)) {
             isAlive = false;
